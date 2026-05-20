@@ -475,6 +475,64 @@ export default function AccessibilityWidget() {
     });
   }, [textAlign]);
 
+  // Image alt tooltips (JS-driven because CSS ::after doesn't work on <img>)
+  useEffect(() => {
+    if (!simple.tooltips) return;
+
+    let tip: HTMLDivElement | null = null;
+
+    const show = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.tagName !== "IMG") return;
+      const alt = (target as HTMLImageElement).alt;
+      if (!alt) return;
+
+      tip = document.createElement("div");
+      tip.textContent = alt;
+      Object.assign(tip.style, {
+        position: "fixed",
+        background: "#1e293b",
+        color: "#fff",
+        padding: "4px 10px",
+        borderRadius: "6px",
+        fontSize: "11px",
+        fontWeight: "500",
+        zIndex: "10001",
+        pointerEvents: "none",
+        whiteSpace: "nowrap",
+        boxShadow: "0 2px 8px rgba(0,0,0,0.2)",
+        top: `${e.clientY - 36}px`,
+        left: `${e.clientX}px`,
+        transform: "translateX(-50%)",
+      });
+      document.body.appendChild(tip);
+    };
+
+    const move = (e: MouseEvent) => {
+      if (!tip) return;
+      tip.style.top = `${e.clientY - 36}px`;
+      tip.style.left = `${e.clientX}px`;
+    };
+
+    const hide = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.tagName !== "IMG") return;
+      tip?.remove();
+      tip = null;
+    };
+
+    document.addEventListener("mouseover", show);
+    document.addEventListener("mousemove", move);
+    document.addEventListener("mouseout", hide);
+
+    return () => {
+      document.removeEventListener("mouseover", show);
+      document.removeEventListener("mousemove", move);
+      document.removeEventListener("mouseout", hide);
+      tip?.remove();
+    };
+  }, [simple.tooltips]);
+
   // Persist to localStorage
   useEffect(() => {
     const state: SavedState = { simple, cursorMode, textAlign };
