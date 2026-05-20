@@ -9,7 +9,7 @@ import HomePage from "./pages/HomePage";
 import TeamPage from "./pages/TeamPage";
 import ReviewsPage from "./pages/ReviewsPage";
 
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
