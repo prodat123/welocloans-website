@@ -605,10 +605,10 @@ export default function GetStartedModal({
                     Prefer to talk?
                   </span>
                   <a
-                    href="tel:+16263748775"
+                    href="tel:+16265691988"
                     className="text-xs font-bold text-blue-700 hover:underline"
                   >
-                    Call (626) 374-8775
+                    Call (626) 569-1988
                   </a>
                 </div>
                 <div className="flex items-center justify-between mb-4">

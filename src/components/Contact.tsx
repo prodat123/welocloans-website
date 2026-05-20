@@ -111,8 +111,8 @@ export default function Contact() {
                 {
                   icon: <FontAwesomeIcon icon={faPhone} />,
                   label: "Phone",
-                  value: "(626) 374-8775",
-                  href: "tel:+16263748775",
+                  value: "(626) 569-1988",
+                  href: "tel:+16265691988",
                 },
                 {
                   icon: <FontAwesomeIcon icon={faEnvelope} />,
