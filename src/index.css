@@ -35,3 +35,115 @@ body {
 input[type='range'] {
   accent-color: #2a7c8a;
 }
+
+/* ── Accessibility widget classes ── */
+
+html.acc-bigger-text {
+  font-size: 120%;
+}
+
+html.acc-high-contrast {
+  filter: contrast(160%) brightness(0.95);
+}
+
+html.acc-highlight-links a {
+  background-color: #fef08a !important;
+  color: #1e1e1e !important;
+  text-decoration: underline !important;
+  border-radius: 2px;
+}
+
+html.acc-dyslexia,
+html.acc-dyslexia * {
+  font-family: 'Verdana', 'Geneva', 'Trebuchet MS', sans-serif !important;
+  letter-spacing: 0.05em !important;
+  word-spacing: 0.1em !important;
+}
+
+html.acc-pause-animations *,
+html.acc-pause-animations *::before,
+html.acc-pause-animations *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+html.acc-line-height *,
+html.acc-line-height p,
+html.acc-line-height li,
+html.acc-line-height span {
+  line-height: 2 !important;
+}
+
+html.acc-text-spacing p,
+html.acc-text-spacing li,
+html.acc-text-spacing span,
+html.acc-text-spacing h1,
+html.acc-text-spacing h2,
+html.acc-text-spacing h3,
+html.acc-text-spacing h4 {
+  letter-spacing: 0.12em !important;
+  word-spacing: 0.18em !important;
+}
+
+html.acc-hide-images img,
+html.acc-hide-images picture,
+html.acc-hide-images video,
+html.acc-hide-images [role="img"] {
+  visibility: hidden !important;
+}
+
+html.acc-tooltips [title] {
+  position: relative;
+}
+html.acc-tooltips [title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1e293b;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+  z-index: 10000;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+html.acc-cursor-big,
+html.acc-cursor-big * {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath d='M5 2 L5 34 L13 26 L19 40 L24 38 L18 24 L29 24 Z' fill='black' stroke='white' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 5 2, auto !important;
+}
+
+html.acc-text-left p,
+html.acc-text-left li,
+html.acc-text-left h1,
+html.acc-text-left h2,
+html.acc-text-left h3,
+html.acc-text-left h4,
+html.acc-text-left span {
+  text-align: left !important;
+}
+
+html.acc-text-center p,
+html.acc-text-center li,
+html.acc-text-center h1,
+html.acc-text-center h2,
+html.acc-text-center h3,
+html.acc-text-center h4,
+html.acc-text-center span {
+  text-align: center !important;
+}
+
+html.acc-text-right p,
+html.acc-text-right li,
+html.acc-text-right h1,
+html.acc-text-right h2,
+html.acc-text-right h3,
+html.acc-text-right h4,
+html.acc-text-right span {
+  text-align: right !important;
+}

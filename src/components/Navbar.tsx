@@ -4,15 +4,14 @@ import { useModal } from "../ModalContext";
 import logo from "./logo.png";
 
 const homeLinks = [
-  { label: "Programs", href: "#programs" },
-  { label: "Qualify", href: "#qualifier" },
-  { label: "Calculator", href: "#calculator" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Programs", href: "/#programs" },
+  { label: "Qualify", href: "/#qualifier" },
+  { label: "Calculator", href: "/#calculator" },
+  { label: "FAQ", href: "/#faq" },
 ];
 
 const pageLinks = [
   { label: "Our Team", to: "/team" },
-  { label: "Reviews", to: "/reviews" },
 ];
 
 export default function Navbar() {
@@ -48,20 +47,19 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-1">
-          {/* Home anchor links — only show on home page */}
-          {isHome &&
-            homeLinks.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                className="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-blue-700 hover:bg-blue-50 transition-colors"
-              >
-                {l.label}
-              </a>
-            ))}
+          {/* Anchor links */}
+          {homeLinks.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              className="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-blue-700 hover:bg-blue-50 transition-colors"
+            >
+              {l.label}
+            </a>
+          ))}
 
           {/* Divider */}
-          {isHome && <span className="w-px h-5 bg-slate-200 mx-1" />}
+          <span className="w-px h-5 bg-slate-200 mx-1" />
 
           {/* Page links — always visible */}
           {pageLinks.map((l) => (
@@ -107,19 +105,18 @@ export default function Navbar() {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden bg-white border-t border-slate-100 px-6 pb-6 pt-3 flex flex-col gap-1">
-          {isHome &&
-            homeLinks.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={() => setMenuOpen(false)}
-                className="px-3 py-2.5 rounded-lg text-sm font-medium text-slate-600 hover:text-blue-700 hover:bg-blue-50 transition-colors"
-              >
-                {l.label}
-              </a>
-            ))}
+          {homeLinks.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              onClick={() => setMenuOpen(false)}
+              className="px-3 py-2.5 rounded-lg text-sm font-medium text-slate-600 hover:text-blue-700 hover:bg-blue-50 transition-colors"
+            >
+              {l.label}
+            </a>
+          ))}
 
-          {isHome && <div className="my-1 border-t border-slate-100" />}
+          <div className="my-1 border-t border-slate-100" />
 
           {pageLinks.map((l) => (
             <Link

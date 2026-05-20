@@ -133,15 +133,15 @@ const steps: StepDef[] = [
     field: "loanType",
     isValid: (f) => !!f.loanType,
     render: (f, set) => (
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+      <div className="grid grid-cols-1 gap-2.5">
         {[
           { icon: "🏠", label: "Purchase", sub: "Buying a new home" },
           { icon: "🔄", label: "Refinance", sub: "Replace my current loan" },
-          { icon: "🏛️", label: "FHA Loan", sub: "Low down payment option" },
-          { icon: "🎖️", label: "VA Loan", sub: "For veterans & military" },
-          { icon: "💎", label: "Jumbo Loan", sub: "High-value homes" },
-          { icon: "🏦", label: "HELOC", sub: "Tap my home equity" },
-          { icon: "🤷", label: "Not Sure", sub: "Help me figure it out" },
+          {
+            icon: "🏛️",
+            label: "Pre-approval",
+            sub: "Find out how much you qualify for",
+          },
         ].map((o) => (
           <OptionCard
             key={o.label}

@@ -7,7 +7,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import TeamPage from "./pages/TeamPage";
-import ReviewsPage from "./pages/ReviewsPage";
+import AccessibilityWidget from "./components/AccessibilityWidget";
 
 import { Analytics } from "@vercel/analytics/react";
 
@@ -31,9 +31,9 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/team" element={<TeamPage />} />
-          <Route path="/reviews" element={<ReviewsPage />} />
         </Routes>
         <Footer />
+        <AccessibilityWidget />
         {modalOpen && (
           <GetStartedModal
             open={modalOpen}

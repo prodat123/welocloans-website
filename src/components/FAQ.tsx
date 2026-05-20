@@ -3,15 +3,15 @@ import { useState } from 'react'
 const faqs = [
   {
     q: 'What counts as a "first-time homebuyer"?',
-    a: "You're considered a first-time homebuyer if you haven't owned a primary residence in the past 3 years — even if you've owned a home before. This means many previous homeowners still qualify for these programs.",
+    a: "You're considered a first-time homebuyer if you haven't owned a primary residence in the past 3 years. Even if you've owned a home before, many previous homeowners still qualify for these programs.",
   },
   {
     q: 'How much money do I need to buy my first home?',
-    a: "With first-time homebuyer programs, you may need very little — sometimes $0. Programs like CalHFA Dream for All can cover up to 20% of the purchase price, and FHA loans require as little as 3.5% down. Closing costs can also be covered through assistance programs or seller credits.",
+    a: "With first-time homebuyer programs, you may need very little. Sometimes $0. Programs like CalHFA Dream for All can cover up to 20% of the purchase price, and FHA loans require as little as 3.5% down. Closing costs can also be covered through assistance programs or seller credits.",
   },
   {
     q: 'What credit score do I need to qualify?',
-    a: "Most first-time homebuyer programs require a minimum score of 620. FHA loans can go as low as 580 with a 3.5% down payment. If your score is below that, we can work with you on a plan to improve it — sometimes within just a few months.",
+    a: "Most first-time homebuyer programs require a minimum score of 620. FHA loans can go as low as 580 with a 3.5% down payment. If your score is below that, we can work with you on a plan to improve it. Sometimes within just a few months.",
   },
   {
     q: 'What is the CalHFA Dream for All program?',
@@ -23,23 +23,23 @@ const faqs = [
   },
   {
     q: 'Do the Santa Ana and Garden Grove programs have limited funds?',
-    a: "Yes — both city programs are funded annually and are awarded on a first-come, first-served basis. Funds can run out mid-year. We recommend contacting us as soon as possible to check current availability and get your application ready.",
+    a: "Yes. Both city programs are funded annually and awarded on a first-come, first-served basis. Funds can run out mid-year. We recommend contacting us as soon as possible to check current availability and get your application ready.",
   },
   {
     q: 'What is a homebuyer education course and do I need one?',
-    a: "A homebuyer education course is typically a 6–8 hour online class that covers budgeting, the purchase process, and homeownership responsibilities. CalHFA Dream for All requires it. We'll point you to an approved HUD provider — it's straightforward and worth it for the programs it unlocks.",
+    a: "A homebuyer education course is typically a 6 to 8 hour online class that covers budgeting, the purchase process, and homeownership responsibilities. CalHFA Dream for All requires it. We'll point you to an approved HUD provider. It's straightforward and worth it for the programs it unlocks.",
   },
   {
     q: 'How long does the homebuying process take?',
-    a: "From application to closing typically takes 30–45 days once you're under contract. The pre-approval process with us takes just a few days. Getting pre-approved first puts you in a strong position when you find the right home.",
+    a: "From application to closing typically takes 30 to 45 days once you're under contract. The pre-approval process with us takes just a few days. Getting pre-approved first puts you in a strong position when you find the right home.",
   },
   {
     q: 'Can I use these programs if I have student loans?',
-    a: "Yes. Student loan debt doesn't disqualify you from these programs. Lenders look at your debt-to-income (DTI) ratio, so the key is that your total monthly debts — including the new mortgage — stay within acceptable limits. We'll run the numbers with you.",
+    a: "Yes. Student loan debt doesn't disqualify you from these programs. Lenders look at your debt-to-income (DTI) ratio, so the key is that your total monthly debts including the new mortgage stay within acceptable limits. We'll run the numbers with you.",
   },
   {
     q: 'Is there a fee to talk to one of your loan officers?',
-    a: "No. Our initial consultations are completely free. We'll review your situation, tell you which programs you qualify for, and give you a clear picture of your options — with zero pressure.",
+    a: "No. Our initial consultations are completely free. We'll review your situation, tell you which programs you qualify for, and give you a clear picture of your options with zero pressure.",
   },
 ]
 

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 const questions = [
+  { id: 'agent', label: 'I am working with a HUD-approved housing counselor', tip: 'Required for all programs listed below.' },
   { id: 'firstTime', label: 'I have not owned a home in the past 3 years', tip: 'Required for all first-time buyer programs.' },
   { id: 'primary', label: 'This will be my primary residence (not a rental or investment)', tip: 'All listed programs require owner-occupancy.' },
   { id: 'california', label: 'I am purchasing a home in California', tip: 'CalHFA programs are California-only.' },
@@ -8,15 +9,14 @@ const questions = [
   { id: 'credit', label: 'My credit score is 620 or above', tip: 'A 620+ score is generally the minimum for most assistance programs.' },
   { id: 'education', label: 'I am willing to complete a homebuyer education course', tip: 'Required for CalHFA Dream for All and several other programs.' },
   { id: 'orangeCounty', label: 'I am purchasing in Orange County (Santa Ana or Garden Grove)', tip: 'Unlocks city-specific programs with extra assistance.' },
-  { id: 'agent', label: 'I am working with (or open to) a HUD-approved housing counselor', tip: 'Some programs require counseling before approval.' },
 ]
 
 const programMap: Record<string, string[]> = {
-  hop: ['firstTime', 'primary', 'california', 'income'],
-  lipa: ['firstTime', 'primary', 'california', 'income', 'credit'],
-  calhfa: ['firstTime', 'primary', 'california', 'credit', 'education'],
-  santaAna: ['firstTime', 'primary', 'orangeCounty', 'income'],
-  gardenGrove: ['firstTime', 'primary', 'orangeCounty', 'income'],
+  hop: ['agent', 'firstTime', 'primary', 'california', 'income'],
+  lipa: ['agent', 'firstTime', 'primary', 'california', 'income', 'credit'],
+  calhfa: ['agent', 'firstTime', 'primary', 'california', 'credit', 'education'],
+  santaAna: ['agent', 'firstTime', 'primary', 'orangeCounty', 'income'],
+  gardenGrove: ['agent', 'firstTime', 'primary', 'orangeCounty', 'income'],
 }
 
 const programInfo: Record<string, { name: string; tagline: string; color: string }> = {

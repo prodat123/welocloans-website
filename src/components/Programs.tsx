@@ -20,7 +20,7 @@ const programs = [
     badge: "City Assistance",
     badgeColor: "bg-green-50 text-green-700",
     description:
-      "You can get up to $140,000 to help buy your home. No monthly payments on that money — ever.",
+      "You can get up to $140,000 to help buy your home. No monthly payments on that money forever.",
     details: [
       "Up to $140,000 toward your purchase",
       "$0 monthly payments on the loan",
@@ -94,57 +94,115 @@ export default function Programs() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {programs.map((p) => (
-            <div
-              key={p.name}
-              className={`bg-white rounded-2xl border border-blue-200 p-6 transition-all hover:-translate-y-1 hover:shadow-lg`}
-            >
-              <div className="flex items-start justify-between gap-3 mb-4">
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl">{p.icon}</span>
-                  <div>
-                    <h3 className="text-base font-extrabold text-slate-900">
-                      {p.name}
-                    </h3>
-                    <p className="text-xs text-slate-400">{p.full}</p>
+        <div className="flex flex-col gap-5">
+          {/* Top row — 3 cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {programs.slice(0, 3).map((p) => (
+              <div
+                key={p.name}
+                className={`bg-white rounded-2xl border border-blue-200 p-6 transition-all hover:-translate-y-1 hover:shadow-lg`}
+              >
+                <div className="flex items-start justify-between gap-3 mb-4">
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">{p.icon}</span>
+                    <div>
+                      <h3 className="text-base font-extrabold text-slate-900">
+                        {p.name}
+                      </h3>
+                      <p className="text-xs text-slate-400">{p.full}</p>
+                    </div>
                   </div>
-                </div>
-                {/* <span
+                  {/* <span
                   className={`shrink-0 text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full ${p.badgeColor}`}
                 >
                   {p.badge}
                 </span> */}
-              </div>
+                </div>
 
-              <p className="text-sm text-slate-500 leading-relaxed mb-4">
-                {p.description}
-              </p>
+                <p className="text-sm text-slate-500 leading-relaxed mb-4">
+                  {p.description}
+                </p>
 
-              <ul className="space-y-1.5">
-                {p.details.map((d) => (
-                  <li
-                    key={d}
-                    className="flex items-center gap-2 text-xs text-slate-600"
-                  >
-                    <svg
-                      width="13"
-                      height="13"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="#2a7c8a"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
+                <ul className="space-y-1.5">
+                  {p.details.map((d) => (
+                    <li
+                      key={d}
+                      className="flex items-center gap-2 text-xs text-slate-600"
                     >
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                    {d}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+                      <svg
+                        width="13"
+                        height="13"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#2a7c8a"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                      {d}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom row — 2 cards centered */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:w-2/3 md:mx-auto">
+            {programs.slice(3).map((p) => (
+              <div
+                key={p.name}
+                className="bg-white rounded-2xl border border-blue-200 p-6 transition-all hover:-translate-y-1 hover:shadow-lg"
+              >
+                <div className="flex items-start justify-between gap-3 mb-4">
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">{p.icon}</span>
+                    <div>
+                      <h3 className="text-base font-extrabold text-slate-900">
+                        {p.name}
+                      </h3>
+                      <p className="text-xs text-slate-400">{p.full}</p>
+                    </div>
+                  </div>
+                </div>
+                <p className="text-sm text-slate-500 leading-relaxed mb-4">
+                  {p.description}
+                </p>
+                <ul className="space-y-1.5">
+                  {p.details.map((d) => (
+                    <li
+                      key={d}
+                      className="flex items-center gap-2 text-xs text-slate-600"
+                    >
+                      <svg
+                        width="13"
+                        height="13"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#2a7c8a"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                      {d}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex items-center justify-center gap-2.5 text-center w-full rounded-xl px-4 py-3 mt-8">
+          <p className="text-sm text-amber-800 leading-relaxed">
+            <strong>Heads up:</strong> These programs are funded annually and
+            availability can change. Contact us to confirm which ones are
+            currently open before you plan around them.
+          </p>
         </div>
       </div>
     </section>

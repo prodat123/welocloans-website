@@ -1,12 +1,19 @@
-import { faPhone } from "@fortawesome/free-solid-svg-icons";
+import { faLetterboxd } from "@fortawesome/free-brands-svg-icons";
+import {
+  faEnvelope,
+  faLocation,
+  faMailBulk,
+  faMessage,
+  faPhone,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 
 function formatPhone(raw: string): string {
-  const digits = raw.replace(/\D/g, '').slice(0, 10)
-  if (digits.length < 4) return digits
-  if (digits.length < 7) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`
-  return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`
+  const digits = raw.replace(/\D/g, "").slice(0, 10);
+  if (digits.length < 4) return digits;
+  if (digits.length < 7) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+  return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
 }
 
 type FormData = {
@@ -27,32 +34,32 @@ export default function Contact() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [submitError, setSubmitError] = useState('');
+  const [submitError, setSubmitError] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     >,
   ) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setForm((f) => ({
       ...f,
-      [name]: name === 'phone' ? formatPhone(value) : value,
+      [name]: name === "phone" ? formatPhone(value) : value,
     }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setSubmitError('');
+    setSubmitError("");
 
     const apiUrl = import.meta.env.VITE_API_URL;
     const companyId = import.meta.env.VITE_COMPANY_ID;
 
     try {
       const res = await fetch(`${apiUrl}/api/clients/${companyId}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: form.name,
           email: form.email,
@@ -72,7 +79,9 @@ export default function Contact() {
       throw new Error(data.error ?? `Request failed (${res.status})`);
     } catch (err) {
       setSubmitError(
-        err instanceof Error ? err.message : 'Something went wrong. Please try again.'
+        err instanceof Error
+          ? err.message
+          : "Something went wrong. Please try again.",
       );
     } finally {
       setLoading(false);
@@ -109,23 +118,13 @@ export default function Contact() {
                   href: "tel:+16263748775",
                 },
                 {
-                  icon: (
-                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                      <polyline points="22,6 12,13 2,6" />
-                    </svg>
-                  ),
+                  icon: <FontAwesomeIcon icon={faEnvelope} />,
                   label: "Email",
-                  value: "warren@welocloans.com",
-                  href: "mailto:warren@welocloans.com",
+                  value: "contact@welocloans.com",
+                  href: "mailto:contact@welocloans.com",
                 },
                 {
-                  icon: (
-                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                      <circle cx="12" cy="10" r="3" />
-                    </svg>
-                  ),
+                  icon: <FontAwesomeIcon icon={faLocation} />,
                   label: "Office",
                   value: "5948 Temple City Blvd, Temple City, CA 91780",
                   href: "https://www.google.com/maps/search/?api=1&query=5948+Temple+City+Blvd+Temple+City+CA+91780",
@@ -135,7 +134,9 @@ export default function Contact() {
                   key={item.label}
                   href={item.href}
                   target={item.label === "Office" ? "_blank" : undefined}
-                  rel={item.label === "Office" ? "noopener noreferrer" : undefined}
+                  rel={
+                    item.label === "Office" ? "noopener noreferrer" : undefined
+                  }
                   className="flex items-start gap-4 group"
                 >
                   <div className="w-10 h-10 rounded-xl bg-blue-50 group-hover:bg-blue-100 flex items-center justify-center text-blue-700 shrink-0 mt-0.5 transition-colors">
@@ -281,13 +282,30 @@ export default function Contact() {
                 >
                   {loading ? (
                     <>
-                      <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8h4z"/>
+                      <svg
+                        className="animate-spin w-4 h-4"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        />
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8h4z"
+                        />
                       </svg>
                       Sending...
                     </>
-                  ) : 'Send Message'}
+                  ) : (
+                    "Send Message"
+                  )}
                 </button>
 
                 <p className="text-center text-[10px] text-slate-400">
