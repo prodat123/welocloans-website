@@ -1,22 +1,20 @@
 import { useState } from 'react'
 
 const questions = [
-  { id: 'agent', label: 'I am working with a HUD-approved housing counselor', tip: 'Required for all programs listed below.' },
   { id: 'firstTime', label: 'I have not owned a home in the past 3 years', tip: 'Required for all first-time buyer programs.' },
   { id: 'primary', label: 'This will be my primary residence (not a rental or investment)', tip: 'All listed programs require owner-occupancy.' },
   { id: 'california', label: 'I am purchasing a home in California', tip: 'CalHFA programs are California-only.' },
   { id: 'income', label: 'My household income is below the area median income (AMI)', tip: 'Most programs cap income at 80%–120% of the local AMI.' },
   { id: 'credit', label: 'My credit score is 620 or above', tip: 'A 620+ score is generally the minimum for most assistance programs.' },
-  { id: 'education', label: 'I am willing to complete a homebuyer education course', tip: 'Required for CalHFA Dream for All and several other programs.' },
   { id: 'orangeCounty', label: 'I am purchasing in Orange County (Santa Ana or Garden Grove)', tip: 'Unlocks city-specific programs with extra assistance.' },
 ]
 
 const programMap: Record<string, string[]> = {
-  hop: ['agent', 'firstTime', 'primary', 'california', 'income'],
-  lipa: ['agent', 'firstTime', 'primary', 'california', 'income', 'credit'],
-  calhfa: ['agent', 'firstTime', 'primary', 'california', 'credit', 'education'],
-  santaAna: ['agent', 'firstTime', 'primary', 'orangeCounty', 'income'],
-  gardenGrove: ['agent', 'firstTime', 'primary', 'orangeCounty', 'income'],
+  hop: ['firstTime', 'primary', 'california', 'income'],
+  lipa: ['firstTime', 'primary', 'california', 'income', 'credit'],
+  calhfa: ['firstTime', 'primary', 'california', 'credit'],
+  santaAna: ['firstTime', 'primary', 'orangeCounty', 'income'],
+  gardenGrove: ['firstTime', 'primary', 'orangeCounty', 'income'],
 }
 
 const programInfo: Record<string, { name: string; tagline: string; color: string }> = {
@@ -44,10 +42,10 @@ export default function Qualifier() {
         <div className="mb-12">
           <p className="text-xs font-bold tracking-[0.12em] uppercase text-blue-600 mb-3">Quick Eligibility Check</p>
           <h2 className="text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
-            Do you qualify?
+            Which first-time homebuyer program do you qualify for?
           </h2>
           <p className="text-lg text-slate-500 max-w-xl">
-            Check every box that applies to you and we'll show you which first-time homebuyer programs you're likely eligible for.
+            Check every box that applies to you and we'll show you which programs you're likely eligible for.
           </p>
         </div>
 
