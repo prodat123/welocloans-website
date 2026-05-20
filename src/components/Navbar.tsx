@@ -10,16 +10,13 @@ const homeLinks = [
   { label: "FAQ", href: "/#faq" },
 ];
 
-const pageLinks = [
-  { label: "Our Team", to: "/team" },
-];
+const pageLinks = [{ label: "Our Team", to: "/team" }];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { pathname } = useLocation();
   const { openModal } = useModal();
-  const isHome = pathname === "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);

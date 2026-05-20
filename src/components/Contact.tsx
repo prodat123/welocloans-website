@@ -1,9 +1,6 @@
-import { faLetterboxd } from "@fortawesome/free-brands-svg-icons";
 import {
   faEnvelope,
   faLocation,
-  faMailBulk,
-  faMessage,
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
