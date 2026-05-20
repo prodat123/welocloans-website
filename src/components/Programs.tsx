@@ -20,9 +20,9 @@ const programs = [
     badge: "City Assistance",
     badgeColor: "bg-green-50 text-green-700",
     description:
-      "You can get up to $140,000 to help buy your home. No monthly payments on that money forever.",
+      "You can get up to $161,000 to help buy your home. No monthly payments on that money forever.",
     details: [
-      "Up to $140,000 toward your purchase",
+      "Up to $161,000 toward your purchase",
       "$0 monthly payments on the loan",
       "Only repay when you sell or refinance",
       "Dramatically lowers what you need upfront",
