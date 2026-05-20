@@ -3,6 +3,7 @@ const languages = [
   { name: "Cantonese", native: "廣東話 ", flag: "CA" },
   { name: "Mandarin", native: "普通话", flag: "CN" },
   { name: "Vietnamese", native: "Tiếng Việt", flag: "VN" },
+  { name: "Teochew", native: "潮州", flag: "TC" },
 ];
 
 export default function Languages() {
