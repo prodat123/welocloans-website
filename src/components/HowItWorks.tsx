@@ -1,8 +1,16 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faShieldHalved,
+  faBolt,
+  faHeadset,
+  faCertificate,
+} from "@fortawesome/free-solid-svg-icons";
+
 const steps = [
   {
     num: '01',
     title: 'Apply in Minutes',
-    desc: 'Fill out our simple online application — no paperwork stack, no branch visit required. Takes about 10 minutes.',
+    desc: 'Fill out our simple online application. No paperwork stack, no branch visit required. Takes about 10 minutes.',
   },
   {
     num: '02',
@@ -23,7 +31,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-24 bg-slate-50">
+    <section id="how-it-works" className="py-24 bg-transparent">
       <div className="max-w-6xl mx-auto px-6">
         <div className="mb-12">
           <p className="text-xs font-bold tracking-[0.12em] uppercase text-blue-600 mb-3">The Process</p>
@@ -41,8 +49,8 @@ export default function HowItWorks() {
               {i < steps.length - 1 && (
                 <div className="hidden lg:block absolute top-7 left-full w-full h-px bg-gradient-to-r from-blue-200 to-transparent z-0" />
               )}
-              <div className="relative bg-white border border-slate-200 rounded-2xl p-6 hover:border-blue-300 hover:shadow-md transition-all hover:-translate-y-1">
-                <div className="w-12 h-12 rounded-xl bg-blue-700 flex items-center justify-center mb-5">
+              <div className="relative bg-white border border-slate-200 rounded-2xl p-6 shadow-card hover:border-blue-300 hover:shadow-card-hover transition-all hover:-translate-y-1">
+                <div className="w-12 h-12 rounded-xl bg-blue-700 flex items-center justify-center mb-5 shadow-sm">
                   <span className="text-white font-extrabold text-sm">{step.num}</span>
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2">{step.title}</h3>
@@ -54,13 +62,15 @@ export default function HowItWorks() {
 
         <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
-            { icon: '🔒', label: 'Bank-Level Security' },
-            { icon: '⚡', label: 'Fast Decisions' },
-            { icon: '💬', label: 'Dedicated Loan Officer' },
-            { icon: '📋', label: 'NMLS Licensed' },
+            { icon: faShieldHalved, label: 'Bank-Level Security', tile: 'bg-blue-50 text-blue-700' },
+            { icon: faBolt, label: 'Fast Decisions', tile: 'bg-amber-50 text-amber-600' },
+            { icon: faHeadset, label: 'Dedicated Loan Officer', tile: 'bg-coral-50 text-coral-600' },
+            { icon: faCertificate, label: 'NMLS Licensed', tile: 'bg-blue-50 text-blue-700' },
           ].map(item => (
-            <div key={item.label} className="flex items-center gap-3 bg-white border border-slate-200 rounded-xl px-4 py-3.5">
-              <span className="text-xl">{item.icon}</span>
+            <div key={item.label} className="flex items-center gap-3 bg-white border border-slate-200 rounded-xl px-4 py-3.5 shadow-xs hover:shadow-sm transition-shadow">
+              <span className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${item.tile}`}>
+                <FontAwesomeIcon icon={item.icon} className="text-sm" />
+              </span>
               <span className="text-sm font-medium text-slate-600">{item.label}</span>
             </div>
           ))}

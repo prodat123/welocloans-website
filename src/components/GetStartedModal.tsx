@@ -522,6 +522,7 @@ export default function GetStartedModal({
           rateType: formData.rateType,
           employmentStatus: formData.employmentStatus,
           hasBankruptcy: formData.hasBankruptcy,
+          sendPortalEmail: true,
         }),
       });
 

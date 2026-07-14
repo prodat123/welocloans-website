@@ -47,7 +47,7 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(null)
 
   return (
-    <section id="faq" className="py-24 bg-slate-50">
+    <section id="faq" className="py-24 bg-transparent">
       <div className="max-w-3xl mx-auto px-6">
         <div className="mb-12 text-center">
           <p className="text-xs font-bold tracking-[0.12em] uppercase text-blue-600 mb-3">FAQ</p>
@@ -65,7 +65,7 @@ export default function FAQ() {
               key={i}
               onClick={() => setOpen(open === i ? null : i)}
               className={`bg-white border rounded-2xl overflow-hidden transition-all cursor-pointer select-none ${
-                open === i ? 'border-blue-300 shadow-md' : 'border-slate-200'
+                open === i ? 'border-blue-300 shadow-card-hover' : 'border-slate-200 shadow-xs hover:shadow-sm'
               }`}
             >
               <div className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left">

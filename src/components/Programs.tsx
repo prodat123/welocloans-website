@@ -1,4 +1,29 @@
-const programs = [
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import {
+  faHouseChimney,
+  faHandHoldingDollar,
+  faStar,
+  faLocationDot,
+} from "@fortawesome/free-solid-svg-icons";
+import Reveal from "./Reveal";
+
+// Rotating warm/teal accent tiles so the cards feel friendly, not one-note.
+const TILE = [
+  "bg-blue-50 text-blue-700",
+  "bg-coral-50 text-coral-600",
+  "bg-amber-50 text-amber-600",
+];
+
+const programs: {
+  name: string;
+  full: string;
+  badge: string;
+  badgeColor: string;
+  description: string;
+  details: string[];
+  icon: IconDefinition;
+}[] = [
   {
     name: "LA County Program",
     full: "Homeownership Program",
@@ -12,7 +37,7 @@ const programs = [
       "Only repay when you sell or refinance",
       "Keep more cash in your pocket at closing",
     ],
-    icon: "🏠",
+    icon: faHouseChimney,
   },
   {
     name: "LA City Program",
@@ -27,7 +52,7 @@ const programs = [
       "Only repay when you sell or refinance",
       "Dramatically lowers what you need upfront",
     ],
-    icon: "🤝",
+    icon: faHandHoldingDollar,
   },
   {
     name: "CalHFA Dream for All",
@@ -42,7 +67,7 @@ const programs = [
       "No monthly payments on the shared loan",
       "Available anywhere in California",
     ],
-    icon: "🌟",
+    icon: faStar,
   },
   {
     name: "Santa Ana Program",
@@ -55,9 +80,9 @@ const programs = [
       "Down payment fully or partially covered",
       "Closing cost assistance included",
       "No repayment while you live in the home",
-      "First-come, first-served — act fast",
+      "First-come, first-served, so act fast",
     ],
-    icon: "📍",
+    icon: faLocationDot,
   },
   {
     name: "Garden Grove Program",
@@ -70,17 +95,17 @@ const programs = [
       "Down payment assistance available",
       "Reduces how much you need to save",
       "No repayment while you live in the home",
-      "First-come, first-served — act fast",
+      "First-come, first-served, so act fast",
     ],
-    icon: "📍",
+    icon: faLocationDot,
   },
 ];
 
 export default function Programs() {
   return (
-    <section id="programs" className="py-24 bg-slate-50">
+    <section id="programs" className="py-24 bg-transparent scroll-mt-28">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="mb-12">
+        <Reveal className="mb-12">
           <p className="text-xs font-bold tracking-[0.12em] uppercase text-blue-600 mb-3">
             Available Programs
           </p>
@@ -92,112 +117,109 @@ export default function Programs() {
             little to no down payment. We'll help you figure out which ones you
             qualify for.
           </p>
-        </div>
+        </Reveal>
 
         <div className="flex flex-col gap-5">
           {/* Top row — 3 cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {programs.slice(0, 3).map((p) => (
-              <div
-                key={p.name}
-                className={`bg-white rounded-2xl border border-blue-200 p-6 transition-all hover:-translate-y-1 hover:shadow-lg`}
-              >
-                <div className="flex items-start justify-between gap-3 mb-4">
-                  <div className="flex items-center gap-3">
-                    <span className="text-2xl">{p.icon}</span>
-                    <div>
-                      <h3 className="text-base font-extrabold text-slate-900">
-                        {p.name}
-                      </h3>
-                      <p className="text-xs text-slate-400">{p.full}</p>
+            {programs.slice(0, 3).map((p, i) => (
+              <Reveal key={p.name} delay={i * 90} className="h-full">
+                <div className="h-full bg-white rounded-2xl border border-blue-100 p-6 shadow-card transition-all hover:-translate-y-1 hover:shadow-card-hover hover:border-blue-200">
+                  <div className="flex items-start justify-between gap-3 mb-4">
+                    <div className="flex items-center gap-3">
+                      <span className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 ${TILE[i % 3]}`}>
+                        <FontAwesomeIcon icon={p.icon} className="text-lg" />
+                      </span>
+                      <div>
+                        <h3 className="text-base font-extrabold text-slate-900">
+                          {p.name}
+                        </h3>
+                        <p className="text-xs text-slate-400">{p.full}</p>
+                      </div>
                     </div>
                   </div>
-                  {/* <span
-                  className={`shrink-0 text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full ${p.badgeColor}`}
-                >
-                  {p.badge}
-                </span> */}
-                </div>
 
-                <p className="text-sm text-slate-500 leading-relaxed mb-4">
-                  {p.description}
-                </p>
+                  <p className="text-sm text-slate-500 leading-relaxed mb-4">
+                    {p.description}
+                  </p>
 
-                <ul className="space-y-1.5">
-                  {p.details.map((d) => (
-                    <li
-                      key={d}
-                      className="flex items-center gap-2 text-xs text-slate-600"
-                    >
-                      <svg
-                        width="13"
-                        height="13"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#2a7c8a"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
+                  <ul className="space-y-1.5">
+                    {p.details.map((d) => (
+                      <li
+                        key={d}
+                        className="flex items-center gap-2 text-xs text-slate-600"
                       >
-                        <polyline points="20 6 9 17 4 12" />
-                      </svg>
-                      {d}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                        <svg
+                          width="13"
+                          height="13"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#2a7c8a"
+                          strokeWidth="2.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                        {d}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
             ))}
           </div>
 
           {/* Bottom row — 2 cards centered */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:w-2/3 md:mx-auto">
-            {programs.slice(3).map((p) => (
-              <div
-                key={p.name}
-                className="bg-white rounded-2xl border border-blue-200 p-6 transition-all hover:-translate-y-1 hover:shadow-lg"
-              >
-                <div className="flex items-start justify-between gap-3 mb-4">
-                  <div className="flex items-center gap-3">
-                    <span className="text-2xl">{p.icon}</span>
-                    <div>
-                      <h3 className="text-base font-extrabold text-slate-900">
-                        {p.name}
-                      </h3>
-                      <p className="text-xs text-slate-400">{p.full}</p>
+            {programs.slice(3).map((p, i) => (
+              <Reveal key={p.name} delay={i * 90} className="h-full">
+                <div className="h-full bg-white rounded-2xl border border-blue-100 p-6 shadow-card transition-all hover:-translate-y-1 hover:shadow-card-hover hover:border-blue-200">
+                  <div className="flex items-start justify-between gap-3 mb-4">
+                    <div className="flex items-center gap-3">
+                      <span className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 ${TILE[(i + 3) % 3]}`}>
+                        <FontAwesomeIcon icon={p.icon} className="text-lg" />
+                      </span>
+                      <div>
+                        <h3 className="text-base font-extrabold text-slate-900">
+                          {p.name}
+                        </h3>
+                        <p className="text-xs text-slate-400">{p.full}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <p className="text-sm text-slate-500 leading-relaxed mb-4">
-                  {p.description}
-                </p>
-                <ul className="space-y-1.5">
-                  {p.details.map((d) => (
-                    <li
-                      key={d}
-                      className="flex items-center gap-2 text-xs text-slate-600"
-                    >
-                      <svg
-                        width="13"
-                        height="13"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#2a7c8a"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
+                  <p className="text-sm text-slate-500 leading-relaxed mb-4">
+                    {p.description}
+                  </p>
+                  <ul className="space-y-1.5">
+                    {p.details.map((d) => (
+                      <li
+                        key={d}
+                        className="flex items-center gap-2 text-xs text-slate-600"
                       >
-                        <polyline points="20 6 9 17 4 12" />
-                      </svg>
-                      {d}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                        <svg
+                          width="13"
+                          height="13"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#2a7c8a"
+                          strokeWidth="2.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                        {d}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
 
-        <div className="flex items-center justify-center gap-2.5 text-center w-full rounded-xl px-4 py-3 mt-8">
+        <div className="flex items-center justify-center gap-2.5 text-center w-full rounded-xl px-4 py-3 mt-8 bg-amber-50 border border-amber-200 shadow-xs">
           <p className="text-sm text-amber-800 leading-relaxed">
             <strong>Heads up:</strong> These programs are funded annually and
             availability can change. Contact us to confirm which ones are

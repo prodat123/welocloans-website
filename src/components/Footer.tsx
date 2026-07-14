@@ -2,9 +2,15 @@ import { Link } from "react-router-dom";
 import logo from "./logo.png";
 import eho from "../equal housing opportunity.webp";
 
+const resourceLinks: { label: string; to?: string; href?: string }[] = [
+  { label: "Loan Calculators", to: "/calculators" },
+  { label: "Eligibility Checker", href: "/#qualifier" },
+  { label: "FAQ", href: "/#faq" },
+];
+
 export default function Footer() {
   return (
-    <footer className="bg-slate-900 py-14">
+    <footer className="bg-slate-900 py-14 shadow-[0_-20px_40px_-20px_rgba(15,23,42,0.35)] relative z-10">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
           {/* Brand */}
@@ -93,18 +99,23 @@ export default function Footer() {
               Resources
             </h4>
             <ul className="space-y-2.5">
-              {[
-                { label: "Loan Calculator", href: "/#calculator" },
-                { label: "Eligibility Checker", href: "/#qualifier" },
-                { label: "FAQ", href: "/#faq" },
-              ].map((item) => (
+              {resourceLinks.map((item) => (
                 <li key={item.label}>
-                  <a
-                    href={item.href}
-                    className="text-sm text-slate-400 hover:text-white transition-colors"
-                  >
-                    {item.label}
-                  </a>
+                  {item.to ? (
+                    <Link
+                      to={item.to}
+                      className="text-sm text-slate-400 hover:text-white transition-colors"
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={item.href}
+                      className="text-sm text-slate-400 hover:text-white transition-colors"
+                    >
+                      {item.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>

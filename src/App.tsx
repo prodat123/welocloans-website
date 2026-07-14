@@ -1,19 +1,21 @@
-import { useState } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { ModalContext } from "./ModalContext";
-import GetStartedModal from "./components/GetStartedModal";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import TeamPage from "./pages/TeamPage";
+import GetStartedPage from "./pages/GetStartedPage";
+import CalculatorsPage from "./pages/CalculatorsPage";
+import LoanSolutionsPage from "./pages/LoanSolutionsPage";
+import FirstTimeBuyerPage from "./pages/FirstTimeBuyerPage";
 import AccessibilityWidget from "./components/AccessibilityWidget";
 import logo from "./components/logo.png";
 
 import { Analytics } from "@vercel/analytics/react";
 
 // ── Set to false to restore the full site ──────────────────
-const MAINTENANCE_MODE = true;
+const MAINTENANCE_MODE = false;
 
 function MaintenancePage() {
   return (
@@ -25,7 +27,7 @@ function MaintenancePage() {
       </h1>
       <p className="text-lg text-slate-500 max-w-md mb-12">
         We're putting the finishing touches on our new site. In the meantime,
-        reach out to us directly — we're happy to help.
+        reach out to us directly. We're happy to help.
       </p>
 
       <div className="flex flex-col gap-4 w-full max-w-sm">
@@ -115,16 +117,48 @@ function MaintenancePage() {
 }
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   useEffect(() => {
+    if (hash) {
+      // Wait a tick so the target route has rendered before scrolling to it.
+      const id = hash.slice(1);
+      requestAnimationFrame(() => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+          return;
+        }
+        window.scrollTo(0, 0);
+      });
+      return;
+    }
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [pathname, hash]);
   return null;
 }
 
-export default function App() {
-  const [modalOpen, setModalOpen] = useState(false);
+function AppInner() {
+  const navigate = useNavigate();
 
+  return (
+    <ModalContext.Provider value={{ openModal: () => navigate("/get-started") }}>
+      <ScrollToTop />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/team" element={<TeamPage />} />
+        <Route path="/calculators" element={<CalculatorsPage />} />
+        <Route path="/loan-solutions" element={<LoanSolutionsPage />} />
+        <Route path="/first-time-homebuyer" element={<FirstTimeBuyerPage />} />
+        <Route path="/get-started" element={<GetStartedPage />} />
+      </Routes>
+      <Footer />
+      <AccessibilityWidget />
+    </ModalContext.Provider>
+  );
+}
+
+export default function App() {
   if (MAINTENANCE_MODE) {
     return (
       <>
@@ -135,24 +169,11 @@ export default function App() {
   }
 
   return (
-    <ModalContext.Provider value={{ openModal: () => setModalOpen(true) }}>
+    <>
       <Analytics />
       <BrowserRouter>
-        <ScrollToTop />
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/team" element={<TeamPage />} />
-        </Routes>
-        <Footer />
-        <AccessibilityWidget />
-        {modalOpen && (
-          <GetStartedModal
-            open={modalOpen}
-            onClose={() => setModalOpen(false)}
-          />
-        )}
+        <AppInner />
       </BrowserRouter>
-    </ModalContext.Provider>
+    </>
   );
 }

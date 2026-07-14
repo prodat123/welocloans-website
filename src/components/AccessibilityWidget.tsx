@@ -694,7 +694,7 @@ export default function AccessibilityWidget() {
               Reset All Settings
             </button>
             <p className="text-[10px] text-slate-400 text-center">
-              WELOC Loans — Accessibility Tools
+              WELOC Loans Accessibility Tools
             </p>
           </div>
         </div>

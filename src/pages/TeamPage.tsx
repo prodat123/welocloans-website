@@ -55,7 +55,7 @@ export default function TeamPage() {
           </h1>
           <p className="text-lg text-slate-500 leading-relaxed">
             Our loan originators are real people who will walk you through every
-            step — in your language, at your pace, with zero pressure.
+            step, in your language, at your pace, with zero pressure.
           </p>
         </div>
 
@@ -67,7 +67,7 @@ export default function TeamPage() {
               className={`bg-white border rounded-2xl overflow-hidden transition-all ${
                 member.placeholder
                   ? "border-dashed border-slate-200"
-                  : "border-slate-200 hover:border-blue-300 hover:shadow-lg hover:-translate-y-1"
+                  : "border-slate-200 shadow-card hover:border-blue-300 hover:shadow-card-hover hover:-translate-y-1"
               }`}
             >
               {/* Avatar area */}
@@ -155,19 +155,19 @@ export default function TeamPage() {
         </div>
 
         {/* CTA bar */}
-        <div className="mt-16 bg-blue-700 rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-16 bg-blue-700 rounded-2xl p-8 shadow-lg flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
             <h3 className="text-xl font-extrabold text-white mb-1">
               Ready to get started?
             </h3>
             <p className="text-blue-200 text-sm">
-              Pick up the phone or send us a message — we'll respond within one
+              Pick up the phone or send us a message. We'll respond within one
               business day.
             </p>
           </div>
           <a
             href="/#contact"
-            className="shrink-0 bg-white text-blue-700 font-bold px-7 py-3 rounded-xl hover:bg-blue-50 transition-colors"
+            className="shrink-0 bg-white text-blue-700 font-bold px-7 py-3 rounded-xl shadow-sm hover:bg-blue-50 hover:shadow-md transition-all"
           >
             Contact Us
           </a>

@@ -1,4 +1,9 @@
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faListCheck,
+  faMagnifyingGlass,
+} from "@fortawesome/free-solid-svg-icons";
 
 const questions = [
   {
@@ -47,7 +52,7 @@ const programInfo: Record<
 > = {
   hop: {
     name: "HOP Program",
-    tagline: "Down payment assistance — deferred loan",
+    tagline: "Down payment assistance, deferred loan",
     color: "border-blue-400 bg-blue-50",
   },
   lipa: {
@@ -57,7 +62,7 @@ const programInfo: Record<
   },
   calhfa: {
     name: "CalHFA Dream for All",
-    tagline: "Up to 20% covered — statewide",
+    tagline: "Up to 20% covered, statewide",
     color: "border-purple-400 bg-purple-50",
   },
   santaAna: {
@@ -108,8 +113,8 @@ export default function Qualifier() {
                 onClick={() => toggle(q.id)}
                 className={`w-full flex items-start gap-4 p-4 rounded-2xl border text-left transition-all ${
                   checked[q.id]
-                    ? "border-blue-400 bg-blue-50"
-                    : "border-slate-200 bg-white hover:border-blue-200 hover:bg-slate-50"
+                    ? "border-blue-400 bg-blue-50 shadow-sm"
+                    : "border-slate-200 bg-white shadow-xs hover:border-blue-200 hover:bg-slate-50 hover:shadow-sm"
                 }`}
               >
                 <span
@@ -150,7 +155,7 @@ export default function Qualifier() {
 
           {/* Results panel */}
           <div className="lg:sticky lg:top-28">
-            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-7">
+            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-7 shadow-card">
               <h3 className="text-base font-extrabold text-slate-900 mb-1">
                 Programs you may qualify for
               </h3>
@@ -162,7 +167,9 @@ export default function Qualifier() {
 
               {!anyChecked && (
                 <div className="flex flex-col items-center py-10 text-center">
-                  <span className="text-4xl mb-3">☑️</span>
+                  <span className="text-4xl mb-3 text-slate-300">
+                    <FontAwesomeIcon icon={faListCheck} />
+                  </span>
                   <p className="text-sm text-slate-400">
                     Your matching programs will appear here as you check items
                     on the left.
@@ -172,12 +179,14 @@ export default function Qualifier() {
 
               {anyChecked && qualified.length === 0 && (
                 <div className="flex flex-col items-center py-8 text-center">
-                  <span className="text-3xl mb-3">🤔</span>
+                  <span className="text-3xl mb-3 text-slate-300">
+                    <FontAwesomeIcon icon={faMagnifyingGlass} />
+                  </span>
                   <p className="text-sm font-semibold text-slate-700 mb-1">
                     No programs matched yet
                   </p>
                   <p className="text-xs text-slate-400 max-w-xs">
-                    Keep checking boxes — you may still qualify once more
+                    Keep checking boxes. You may still qualify once more
                     criteria are met. Contact us and we'll look at every option
                     for you.
                   </p>
@@ -190,7 +199,7 @@ export default function Qualifier() {
                   return (
                     <div
                       key={key}
-                      className={`border-2 rounded-xl px-4 py-3.5 ${p.color}`}
+                      className={`border-2 rounded-xl px-4 py-3.5 shadow-xs ${p.color}`}
                     >
                       <div className="flex items-center gap-2 mb-0.5">
                         <svg

@@ -29,7 +29,7 @@ export default function Languages() {
             {languages.map((lang) => (
               <div
                 key={lang.name}
-                className="bg-blue-800/50 border border-blue-500/30 rounded-2xl px-5 py-5 flex items-center gap-3 hover:bg-blue-800/80 transition-colors"
+                className="bg-blue-800/50 border border-blue-500/30 rounded-2xl px-5 py-5 flex items-center gap-3 shadow-[0_8px_20px_-6px_rgba(0,0,0,0.25)] hover:bg-blue-800/80 hover:shadow-[0_12px_28px_-6px_rgba(0,0,0,0.35)] hover:-translate-y-0.5 transition-all"
               >
                 <span className="text-3xl text-white">{lang.flag}</span>
                 <div>
